@@ -122,3 +122,17 @@ button:hover {
 .how-it-works ul {
   padding-left: 20px;
 }
+
+.tagline {
+  font-size: 1.1rem;
+  color: #2e7d32;
+  margin: 4px auto;
+}
+
+.description {
+  max-width: 480px;
+  margin: 8px auto 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
