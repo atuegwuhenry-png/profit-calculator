@@ -105,3 +105,20 @@ button:hover {
   color: #c62828;
   font-weight: bold;
 }
+
+.how-it-works {
+  max-width: 480px;
+  margin: 12px auto;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.how-it-works summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.how-it-works ul {
+  padding-left: 20px;
+}
