@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Margin Calculator</title>
+  <style>
+    <link rel="stylesheet" href="style.css">
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Profit Margin Calculator</h1>
+
+    <form id="margin-form" novalidate>
+      <label for="cost">Cost price (₦)</label>
+      <input type="text" inputmode="decimal" id="cost" ...>
+
+      <label for="sell">Selling price (₦)</label>
+      <input type="text" inputmode="decimal" id="sell" ...>
+
+      <button type="submit">Calculate</button>
+      <button type="button" id="clear-btn">Clear</button>
+    </form>
+
+    <p id="error" class="error" role="alert"></p>
+
+    <section id="results" class="results" hidden>
+      <button type="button" id="copy-btn">Copy results</button>
+      <div class="result-row">
+        <span>Gross profit</span>
+        <strong id="profit"></strong>
+      </div>
+      <div class="result-row">
+        <span>Profit margin</span>
+        <strong id="margin"></strong>
+      </div>
+      <div class="result-row">
+        <span>Markup</span>
+        <strong id="markup"></strong>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
