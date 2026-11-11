@@ -31,6 +31,9 @@
       <label for="sell">Selling price (₦)</label>
       <input type="text" inputmode="decimal" id="sell" ...>
 
+      <label for="qty">Quantity</label>
+      <input type="text" inputmode="numeric" id="qty" value="1" placeholder="1">
+
       <button type="submit">Calculate</button>
       <button type="button" id="clear-btn">Clear</button>
     </form>
@@ -51,6 +54,9 @@
         <span>Markup</span>
         <strong id="markup"></strong>
       </div>
+
+      <div id="totals-output" class="totals"></div>
+      <p id="verdict" class="verdict"></p>
     </section>
   </main>
 

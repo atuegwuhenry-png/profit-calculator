@@ -17,6 +17,33 @@ function parseAmount(text) {
   return parseFloat(text.replace(/,/g, ''));
 }
 
+// ===== Quantity, total profit and verdict =====
+const qtyInput = document.getElementById('qty');
+const totalsOutput = document.getElementById('totals-output');
+const verdictOutput = document.getElementById('verdict');
+
+qtyInput.addEventListener('input', () => formatAsYouType(qtyInput));
+
+function formatNaira(amount) {
+  return '₦' + amount.toLocaleString('en-NG', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+function getVerdict(marginPercent) {
+  if (marginPercent < 0) {
+    return { text: 'Loss: you are selling below cost. Raise your price.', color: '#c62828' };
+  }
+  if (marginPercent < 10) {
+    return { text: 'Thin: very little room for transport, data, or surprises. Consider a higher price.', color: '#ef6c00' };
+  }
+  if (marginPercent < 25) {
+    return { text: 'Healthy: a reasonable profit for most small businesses.', color: '#2e7d32' };
+  }
+  return { text: 'Strong: a good margin. Check that your price is still competitive.', color: '#1565c0' };
+}
+
 costInput.addEventListener('input', () => formatAsYouType(costInput));
 sellInput.addEventListener('input', () => formatAsYouType(sellInput));
 const errorEl = document.getElementById('error');
@@ -86,6 +113,31 @@ form.addEventListener('submit', (event) => {
   marginEl.style.fontWeight = 'bold';
 
   resultsEl.hidden = false;
+
+  // Quantity and totals
+const qty = parseAmount(qtyInput.value);
+
+if (!qty || qty < 1 || !Number.isInteger(qty)) {
+  totalsOutput.textContent = 'Enter a quantity of 1 or more, using whole numbers only.';
+  verdictOutput.textContent = '';
+  return;
+}
+
+const profitPerItem = sell - cost;
+const totalCost = cost * qty;
+const totalRevenue = sell * qty;
+const totalProfit = profitPerItem * qty;
+const marginPercent = (profitPerItem / sell) * 100;
+
+totalsOutput.innerHTML = `
+  <p>Total cost: <strong>${formatNaira(totalCost)}</strong></p>
+  <p>Total revenue: <strong>${formatNaira(totalRevenue)}</strong></p>
+  <p>Total profit: <strong>${formatNaira(totalProfit)}</strong></p>
+`;
+
+const verdict = getVerdict(marginPercent);
+verdictOutput.textContent = verdict.text;
+verdictOutput.style.color = verdict.color;
 });
 
 // ===== Clear button =====

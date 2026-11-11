@@ -136,3 +136,15 @@ button:hover {
   line-height: 1.5;
   color: #444;
 }
+
+.totals {
+  max-width: 480px;
+  margin: 12px auto;
+  text-align: left;
+}
+
+.verdict {
+  max-width: 480px;
+  margin: 8px auto;
+  font-weight: bold;
+}
